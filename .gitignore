@@ -1,0 +1,31 @@
+# Ignore target/ folder for Maven builds
+backend/MuyagaOS/target/
+
+# Java class files
+*.class
+
+# Log files
+*.log
+
+# Maven
+.mvn/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# VS Code config
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Node modules for frontend
+frontend/node_modules/
+frontend/build/
+
+# Environment variables
+*.env
