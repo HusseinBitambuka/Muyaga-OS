@@ -5,9 +5,13 @@ import java.util.List;
 
 import com.muyaga.Hardware.imp.ClockListener;
 
-public class Clock {
+public class Clock extends Hardware {
     private List<ClockListener> listeners = new ArrayList<>();
     private boolean running = false;
+
+    public Clock(int id, String name) {
+        super(id, name);
+    }
 
     // Register a listener
     public void addListener(ClockListener listener) {

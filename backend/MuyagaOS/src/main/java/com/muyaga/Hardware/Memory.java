@@ -2,12 +2,13 @@ package com.muyaga.Hardware;
 
 import com.muyaga.Hardware.imp.ClockListener;
 
-public class Memory implements ClockListener {
+public class Memory extends Hardware implements ClockListener {
     private static final int MEMORY_SIZE = 65536; // 64KB
     private final byte[] memory;
 
     // Constructor: Initializes all memory addresses to 0
-    public Memory() {
+    public Memory(int id, String name) {
+        super(id, name);
         memory = new byte[MEMORY_SIZE];
         for (int address = 0; address < MEMORY_SIZE; address++) {
             memory[address] = 0x00;
@@ -16,13 +17,13 @@ public class Memory implements ClockListener {
 
     // Read a byte from memory
     public byte read(int address) {
-        validateAddress(address);
+        this.validateAddress(address);
         return memory[address];
     }
 
     // Write a byte to memory
     public void write(int address, byte value) {
-        validateAddress(address);
+        this.validateAddress(address);
         memory[address] = value;
     }
 
@@ -35,16 +36,17 @@ public class Memory implements ClockListener {
 
     // Debug: Print memory contents
     public void debugPrintMemory(int startAddress, int endAddress) {
-        validateAddress(startAddress);
-        validateAddress(endAddress);
+        this.validateAddress(startAddress);
+        this.validateAddress(endAddress);
 
         for (int address = startAddress; address <= endAddress; address++) {
             System.out.printf("0x%04X: 0x%02X%n", address, memory[address]);
         }
     }
 
+    @Override
     public void pulse() {
-        System.out.println("received clock pulse");
+        this.log("received clock pulse");
 
     }
 }

@@ -2,10 +2,15 @@ package com.muyaga.Hardware;
 
 import com.muyaga.Hardware.imp.ClockListener;
 
-public class CPU implements ClockListener {
+public class CPU extends Hardware implements ClockListener {
     private int cpuClockCount = 0;
 
+    public CPU(int id, String name) {
+        super(id, name);
+    }
+
+    @Override
     public void pulse() {
-        System.out.println("received clock pulse - CPU Clock Count: " + cpuClockCount++);
+        this.log("received clock pulse - CPU Clock Count: " + cpuClockCount++);
     }
 }
