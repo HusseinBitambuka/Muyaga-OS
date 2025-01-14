@@ -44,6 +44,18 @@ public class Memory extends Hardware implements ClockListener {
         }
     }
 
+    byte[] getMemory() {
+        return this.memory;
+    }
+
+    byte getDataAtAddrressLocation(short address) {
+        return this.memory[address];
+    }
+
+    void setMemoryAddress(short address, byte data) {
+        this.memory[address] = data;
+    }
+
     @Override
     public void pulse() {
         this.log("received clock pulse");
